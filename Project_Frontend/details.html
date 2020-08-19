@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- header -->
+    <div class="header">
+        <!-- menu-top -->
+        <div class="menu-top">
+            <ul>
+                <li><img src="images/search.jpg"></li>
+                <li><a href="#">Tìm kiếm&nbsp;&nbsp;&nbsp;</a></li>
+                <li><img src="images/gio-hang.jpg"></li>
+                <li><a href="#">Giỏ hàng(0)&nbsp;&nbsp;&nbsp;</a></li>
+                <li><img src="images/tk.jpg"></li>
+                <li><a href="#">Tài khoản</a></li>
+                <div style="clear: both;"></div>
+            </ul>
+        </div>
+        <!-- end menu-top -->
+        <!-- banner -->
+        <div class="banner">
+            <div>LaJi Store</div>
+        </div>
+        <!-- end banner -->
+        <!-- menu-bot -->
+        <div class="menu-bot">
+            <ul class="menu">
+                <li><a href="index.html">T&nbsp;R&nbsp;A&nbsp;N&nbsp;G&nbsp;&nbsp; C&nbsp;H&nbsp;Ủ</a></li>
+                <li>
+                    <a href="trang-sp.html">
+                        B&nbsp;Ộ&nbsp;&nbsp; S&nbsp;Ư&nbsp;U&nbsp;&nbsp; T&nbsp;Ậ&nbsp;P
+                    </a>
+                    <ul>
+                        <li><a href="trang-sp.html">Nhẫn</a></li>
+                        <li><a href="trang-sp.html">Hoa tai</a></li>
+                        <li><a href="trang-sp.html">Dây chuyền</a></li>
+                        <li><a href="trang-sp.html">Vòng tay</a></li>
+                        <li><a href="trang-sp.html">Phụ kiện</a></li>
+                    </ul>
+                </li>
+                <li><a href="blog.html">B&nbsp;L&nbsp;O&nbsp;G</a></li>
+                <li><a href="#">G&nbsp;I&nbsp;Ớ&nbsp;I&nbsp;&nbsp; T&nbsp;H&nbsp;I&nbsp;Ệ&nbsp;U</a></li>
+                <div style="clear: both;"></div>
+            </ul>
+        </div>
+        <!-- end menu-bot -->
+    </div>
+    <!-- end header -->
+    <!-- slide -->
+    <div class="slide">
+        <img src="images/slide-sp.jpg">
+    </div>
+    <!-- end slide -->
+    <!-- category -->
+    <div class="category-sp" style="width: 300px; float: left; margin-top: 40px; margin-left: 40px;">
+
+    </div>
+    <!-- end category -->
+    <!-- main -->
+    <div class="main">
+        <div class="timeline-items container">
+            <h2>Giỏ hàng của bạn</h2>
+            <form action="" method="post">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th width="40%">Tên sản phẩm</th>
+                        <th width="12%">Số lượng</th>
+                        <th>Giá</th>
+                        <th>Thành tiền</th>
+                        <th></th>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <img class="product-avatar img-responsive"
+                                 src="../backend/assets/uploads/"
+                                 width="80">
+                            <div class="content-product">
+                                <a href=""
+                                   class="content-product-a">
+                                    <?php echo $cart['name']; ?>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <!--  cần khéo léo đặt name cho input số lượng,
+                            để khi xử lý submit form update lại giỏ hàng sẽ đơn giản hơn    -->
+                            <input type="number" min="0" name="<?php echo $product_id; ?>"
+                                   class="product-amount form-control"
+                                   value="<?php echo $cart['quality']?>">
+                        </td>
+                        <td>
+                            <?php echo number_format($cart['price']); ?>
+                        </td>
+                        <td>
+                            <?php
+                    //thành tiền
+                    $total_item = $cart['price'] * $cart['quality'];
+                    echo number_format($total_item);
+                    //cộng dồn Thành tiên cho tổng giá trị đơn hàng
+                    $total_cart += $total_item;
+                    ?>
+                        </td>
+                        <td>
+                            <a class="content-product-a"
+                               href="xoa-san-pham/<?php echo $product_id; ?>">
+                                Xóa
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <tr>
+                        <td colspan="5" style="text-align: right">
+                            Tổng giá trị đơn hàng:
+                            <span class="product-price">
+                      <?php
+                      echo number_format($total_cart);
+                      ?>
+                    </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="product-payment">
+                            <input type="submit" name="submit" value="Cập nhật lại giá" class="btn btn-primary">
+                            <a href="thanh-toan" class="btn btn-success">Đến trang thanh toán</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            <?php else: ?>
+            <h3>Giỏ hàng trống</h3>
+            <?php endif; ?>
+        </div>
+
+        </div>
+    </div>
+    <!-- end main -->
+    <!-- footer -->
+    <div class="footer">
+        <div class="row">
+            <div class="col">
+                <h4>PHÁP LÝ & CÂU HỎI</h4>
+                <ul>
+                    <li><a href="#">Tìm kiếm</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>DANH MỤC SẢN PHẨM</h4>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Bộ sưu tập</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>ĐĂNG KÝ NHẬN TIN</h4>
+                <ul>
+                    <li>Đăng ký ngay để nhận thông tin khuyến mãi, các chương trình quà tặng từ shop.</li>
+                    <li>
+                        <form action="">
+                            <label for="email">Nhập email của bạn</label><br>
+                            <input type="text" name="email">
+                            <input type="submit" name="Đăng ký">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+</div>
+</body>
+</html>
